@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="ms" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0f172a">
+    <meta name="description" content="Pro Player Mentality — penilaian fokus, motivasi dan ketahanan mental atlet.">
+    <meta name="application-name" content="Pro Player Mentality">
+    <meta name="color-scheme" content="dark">
+    <title>PRO PLAYER MENTALITY - Pembangunan Motivasi Sukan</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@500;700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            yellow: '#facc15',
+                            cyan: '#06b6d4',
+                            red: '#f43f5e',
+                            dark: '#0f172a',
+                            card: '#1e293b'
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['Teko', 'sans-serif'],
+                        body: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .font-heading { font-family: 'Teko', sans-serif; letter-spacing: 1px; }
+        .gradient-text {
+            background: linear-gradient(135deg, #facc15 0%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-body min-h-screen flex flex-col justify-between custom-scrollbar selection:bg-yellow-400 selection:text-black">
+
+    <!-- NAVIGATION BAR -->
+    <header class="sticky top-0 z-50 bg-slate-900/90 backdrop-blur-md border-b border-slate-800 px-4 py-3">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="bg-gradient-to-tr from-yellow-400 to-cyan-400 p-2 rounded-xl text-slate-950 font-black text-xl">
+                    <i class="fa-solid font-bold fa-bolt-lightning"></i>
+                </div>
+                <div>
+                    <h1 class="font-heading text-3xl leading-none uppercase tracking-wide font-bold">
+                        PRO PLAYER <span class="text-yellow-400">MENTALITY</span>
+                    </h1>
+                    <p class="text-xs text-slate-400 -mt-1 hidden sm:block">Sistem Pembangunan Ketahanan Mental & Motivasi Atlet</p>
+                </div>
+            </div>
+
+            <nav class="hidden lg:flex items-center space-x-1 text-sm font-medium">
+                <button onclick="scrollToSection('sec-daftar')" class="px-3 py-1.5 rounded-lg hover:text-yellow-400 transition"><i class="fa-solid fa-user-plus mr-1.5"></i>Pemain</button>
+                <button onclick="scrollToSection('sec-masalah')" class="px-3 py-1.5 rounded-lg hover:text-yellow-400 transition"><i class="fa-solid fa-triangle-exclamation mr-1.5"></i>Masalah</button>
+                <button onclick="scrollToSection('sec-soal')" class="px-3 py-1.5 rounded-lg hover:text-yellow-400 transition"><i class="fa-solid fa-clipboard-question mr-1.5"></i>Soal Selidik</button>
+                <button onclick="scrollToSection('sec-analisis')" class="px-3 py-1.5 rounded-lg hover:text-yellow-400 transition"><i class="fa-solid fa-chart-pie mr-1.5"></i>Analisis</button>
+                <button onclick="scrollToSection('sec-kata')" class="px-3 py-1.5 rounded-lg hover:text-yellow-400 transition"><i class="fa-solid fa-quote-right mr-1.5"></i>Kata Semangat</button>
+                <button onclick="scrollToSection('sec-game')" class="px-3 py-1.5 rounded-lg hover:text-yellow-400 transition"><i class="fa-solid fa-gamepad mr-1.5"></i>Mini Game</button>
+                <button onclick="scrollToSection('sec-feedback')" class="px-3 py-1.5 rounded-lg hover:text-yellow-400 transition"><i class="fa-solid fa-comment-dots mr-1.5"></i>Feedback</button>
+            </nav>
+
+            <div class="flex items-center space-x-2">
+                <div id="cloudStatusBadge" class="hidden sm:flex items-center space-x-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-[11px] px-2.5 py-1 rounded-full font-semibold">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                    <i class="fa-solid fa-cloud mr-1"></i>
+                    <span>Sync Awan Live (Auto-Save)</span>
+                </div>
+                <button onclick="scrollToSection('sec-admin')" class="bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-bold px-4 py-2 rounded-lg text-xs uppercase tracking-wider transition shadow-lg shadow-yellow-500/20 flex items-center space-x-1">
+                    <i class="fa-solid fa-database"></i>
+                    <span class="hidden sm:inline">Data Pembuat</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="max-w-7xl mx-auto px-4 py-8 space-y-12 w-full">
+
+        <!-- TAJUK & HERO SECTION -->
+        <section id="sec-hero" class="relative rounded-3xl overflow-hidden bg-gradient-to-br from-slate-900 via-slate-900 to-slate-950 border border-slate-800 p-8 sm:p-12 shadow-2xl">
+            <div class="absolute -right-20 -top-20 w-80 h-80 bg-yellow-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -left-20 -bottom-20 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <div class="relative z-10 max-w-3xl space-y-6">
+                <div class="inline-flex items-center space-x-2 bg-yellow-400/10 border border-yellow-400/30 text-yellow-400 text-xs px-3 py-1 rounded-full uppercase tracking-wider font-semibold">
+                    <i class="fa-solid fa-trophy"></i>
+                    <span>Modul Motivasi & Psikologi Sukan</span>
+                </div>
+                <h1 class="font-heading text-6xl sm:text-7xl font-bold uppercase tracking-tight leading-none">
+                    PRO PLAYER <span class="gradient-text">MENTALITY</span>
+                </h1>
+                <p class="text-slate-300 text-base sm:text-lg leading-relaxed">
+                    Bakat sahaja tidak mencukupi untuk menjadi juara. Kekuatan mental, fokus tanpa goyah, dan kawalan emosi adalah pembeza antara pemain biasa dan **Pro Player**. Analisis ketahanan mental anda hari ini.
+                </p>
+                <div class="flex flex-wrap gap-4 pt-2">
+                    <button onclick="scrollToSection('sec-daftar')" class="bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-bold px-6 py-3.5 rounded-xl transition flex items-center space-x-2 shadow-lg shadow-yellow-400/20">
+                        <span>Mula Pendaftaran</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                    <button onclick="scrollToSection('sec-game')" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-semibold px-6 py-3.5 rounded-xl transition flex items-center space-x-2">
+                        <i class="fa-solid fa-gamepad text-cyan-400"></i>
+                        <span>Uji Refleks Fokus</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. DAFTAR PEMAIN -->
+        <section id="sec-daftar" class="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-xl">
+            <div class="flex items-center space-x-3 mb-6">
+                <div class="w-10 h-10 rounded-xl bg-yellow-400/10 text-yellow-400 flex items-center justify-center font-bold text-xl">1</div>
+                <div>
+                    <h2 class="font-heading text-3xl font-bold uppercase leading-none">Pendaftaran Pemain</h2>
+                    <p class="text-xs text-slate-400">Masukkan maklumat asas atlet untuk memulakan analisis peribadi</p>
+                </div>
+            </div>
+
+            <form id="formPemain" onsubmit="handleDaftarPemain(event)" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div>
+                    <label class="block text-xs font-semibold uppercase text-slate-400 mb-2">Nama Penuh</label>
+                    <input type="text" id="namaPemain" required placeholder="Cth: Arif Aiman" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-100 focus:outline-none focus:border-yellow-400 transition">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold uppercase text-slate-400 mb-2">Jenis Sukan</label>
+                    <select id="sukanPemain" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-100 focus:outline-none focus:border-yellow-400 transition">
+                        <option value="">-- Pilih Sukan --</option>
+                        <option value="Bola Sepak">Bola Sepak / Futsal</option>
+                        <option value="Badminton">Badminton</option>
+                        <option value="Esports">Esports (Mobile Legends/PUBG/Valorant)</option>
+                        <option value="Sepak Takraw">Sepak Takraw</option>
+                        <option value="Olahraga">Olahraga / Larian</option>
+                        <option value="Bola Keranjang">Bola Keranjang</option>
+                        <option value="Sukan Lain">Lain-lain Sukan</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold uppercase text-slate-400 mb-2">Tahap Penglibatan</label>
+                    <select id="tahapPemain" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-100 focus:outline-none focus:border-yellow-400 transition">
+                        <option value="Amatur / Sekolah">Sekolah / Amatur</option>
+                        <option value="Universiti / Daerah">Kolej / Daerah</option>
+                        <option value="Negeri / Semi-Pro">Negeri / Semi-Pro</option>
+                        <option value="Kebangsaan / Pro">Kebangsaan / Pro</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold uppercase text-slate-400 mb-2">Umur (Tahun)</label>
+                    <input type="number" id="umurPemain" required min="8" max="60" placeholder="18" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-100 focus:outline-none focus:border-yellow-400 transition">
+                </div>
+                <div class="md:col-span-2 lg:col-span-4 flex justify-end pt-2">
+                    <button type="submit" class="bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-bold px-6 py-3 rounded-xl transition flex items-center space-x-2">
+                        <i class="fa-solid fa-floppy-disk"></i>
+                        <span>Simpan Profil Pemain</span>
+                    </button>
+                </div>
+            </form>
+
+            <div id="statusProfil" class="hidden mt-4 p-4 rounded-xl bg-slate-950 border border-emerald-500/40 text-emerald-400 text-sm flex items-center space-x-3">
+                <i class="fa-solid fa-circle-check text-xl"></i>
+                <span id="statusProfilText">Profil berjaya disimpan!</span>
+            </div>
+        </section>
+
+        <!-- 3. MASALAH MOTIVASI -->
+        <section id="sec-masalah" class="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-xl">
+            <div class="flex items-center space-x-3 mb-6">
+                <div class="w-10 h-10 rounded-xl bg-cyan-400/10 text-cyan-400 flex items-center justify-center font-bold text-xl">2</div>
+                <div>
+                    <h2 class="font-heading text-3xl font-bold uppercase leading-none">Kenal Pasti Masalah Motivasi</h2>
+                    <p class="text-xs text-slate-400">Pilih cabaran mental yang paling kerap anda alami semasa latihan atau perlawanan</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" id="gridMasalah">
+                <!-- Checklist masalah -->
+            </div>
+
+            <div class="mt-6 p-4 rounded-xl bg-slate-950 border border-slate-800 flex items-start space-x-3">
+                <i class="fa-solid fa-lightbulb text-yellow-400 text-xl mt-1"></i>
+                <div>
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-yellow-400 mb-1">Nota Psikologi Sukan</h4>
+                    <p class="text-xs text-slate-300 leading-relaxed">Mengenal pasti kelemahan emosi adalah langkah pertama untuk membina daya tahan mental (Mental Toughness). Pro Player bukan tidak pernah rasa takut, tetapi mereka tahu cara mengawalnya.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. SOAL SELIDIK MOTIVASI -->
+        <section id="sec-soal" class="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-xl">
+            <div class="flex items-center space-x-3 mb-6">
+                <div class="w-10 h-10 rounded-xl bg-rose-400/10 text-rose-400 flex items-center justify-center font-bold text-xl">3</div>
+                <div>
+                    <h2 class="font-heading text-3xl font-bold uppercase leading-none">Soal Selidik Ketahanan Mental (OMSAT Lite)</h2>
+                    <p class="text-xs text-slate-400">Nilaikan kenyataan berikut mengikut tahap ketepatan diri anda (Skala 1 - 5)</p>
+                </div>
+            </div>
+
+            <div class="space-y-6" id="containerSoalSelidik">
+                <!-- Soalan-soalan disuntik melalui JS -->
+            </div>
+
+            <div class="mt-8 flex justify-end">
+                <button onclick="prosesSoalSelidik()" class="bg-gradient-to-r from-yellow-400 to-amber-500 hover:from-yellow-300 hover:to-amber-400 text-slate-950 font-bold px-8 py-3.5 rounded-xl transition shadow-lg shadow-yellow-500/20 flex items-center space-x-2">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Jana Analisis Data Mentak</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- 5. ANALISIS DATA PEMAIN -->
+        <section id="sec-analisis" class="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-xl">
+            <div class="flex items-center space-x-3 mb-6">
+                <div class="w-10 h-10 rounded-xl bg-emerald-400/10 text-emerald-400 flex items-center justify-center font-bold text-xl">4</div>
+                <div>
+                    <h2 class="font-heading text-3xl font-bold uppercase leading-none">Analisis Data Mentak Pemain</h2>
+                    <p class="text-xs text-slate-400">Visualisasi profil psikologi & tahap motivasi berdasarkan jawapan anda</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <!-- Carta Radar -->
+                <div class="lg:col-span-6 bg-slate-950 p-6 rounded-2xl border border-slate-800 flex flex-col items-center justify-center min-h-[350px]">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4 text-center">Profil Ketahanan Mental</h3>
+                    <div class="w-full max-w-md h-[280px] relative">
+                        <canvas id="radarChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Rumusan & Ringkasan Skor -->
+                <div class="lg:col-span-6 space-y-4">
+                    <div class="bg-slate-950 p-6 rounded-2xl border border-slate-800 space-y-4">
+                        <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                            <span class="text-xs font-bold uppercase text-slate-400">Skor Indeks Mental Pro</span>
+                            <span id="textSkorKeseluruhan" class="font-heading text-4xl font-bold text-yellow-400">0%</span>
+                        </div>
+                        <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                            <span class="text-xs font-bold uppercase text-slate-400">Tahap Ketahanan Mental</span>
+                            <span id="textTahapStatus" class="text-sm font-bold bg-slate-800 px-3 py-1 rounded-full text-slate-300">Belum Dianalisis</span>
+                        </div>
+                        <div>
+                            <h4 class="text-xs font-bold uppercase text-slate-400 mb-2">Cadangan Tindakan Jurulatih Mentak</h4>
+                            <p id="textCadangan" class="text-xs text-slate-300 leading-relaxed bg-slate-900 p-3.5 rounded-xl border border-slate-800/80">
+                                Sila lengkapkan soal selidik di atas untuk mendapatkan rumusan dan pelan tindakan khas.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. KATA SEMANGAT -->
+        <section id="sec-kata" class="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-xl">
+            <div class="flex items-center space-x-3 mb-6">
+                <div class="w-10 h-10 rounded-xl bg-purple-400/10 text-purple-400 flex items-center justify-center font-bold text-xl">5</div>
+                <div>
+                    <h2 class="font-heading text-3xl font-bold uppercase leading-none">Kata Semangat Pro Player</h2>
+                    <p class="text-xs text-slate-400">Inspirasi harian untuk membakar semangat bertanding</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                <button onclick="tukarKataSemangat('sebelum')" class="bg-slate-950 hover:bg-slate-800 border border-slate-800 p-4 rounded-xl text-left transition space-y-2">
+                    <i class="fa-solid fa-fire text-yellow-400 text-lg"></i>
+                    <h4 class="font-bold text-sm">Sebelum Perlawanan</h4>
+                    <p class="text-xs text-slate-400">Redakan gemuruh & fokus kepada strategi</p>
+                </button>
+                <button onclick="tukarKataSemangat('ketinggalan')" class="bg-slate-950 hover:bg-slate-800 border border-slate-800 p-4 rounded-xl text-left transition space-y-2">
+                    <i class="fa-solid fa-rotate-left text-cyan-400 text-lg"></i>
+                    <h4 class="font-bold text-sm">Bangkit Dari Ketinggalan</h4>
+                    <p class="text-xs text-slate-400">Mental johan apabila mata tidak menyebelahi</p>
+                </button>
+                <button onclick="tukarKataSemangat('keletihan')" class="bg-slate-950 hover:bg-slate-800 border border-slate-800 p-4 rounded-xl text-left transition space-y-2">
+                    <i class="fa-solid fa-dumbbell text-rose-400 text-lg"></i>
+                    <h4 class="font-bold text-sm">Mengatasi Keletihan</h4>
+                    <p class="text-xs text-slate-400">Teruskan melangkah apabila badan penat</p>
+                </button>
+            </div>
+
+            <!-- Card Kata Semangat Dinamik -->
+            <div class="bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950 border border-slate-800 rounded-2xl p-6 sm:p-8 text-center relative overflow-hidden">
+                <i class="fa-solid fa-quote-left text-6xl text-slate-800 absolute top-4 left-4 opacity-30"></i>
+                <div class="relative z-10 space-y-4 max-w-2xl mx-auto">
+                    <p id="quoteText" class="text-lg sm:text-2xl font-bold italic text-slate-100 leading-relaxed">
+                        "Tekanan adalah satu keistimewaan. Ia bermakna anda berada dalam kedudukan di mana hasilnya memberikan makna yang besar."
+                    </p>
+                    <p id="quoteAuthor" class="text-xs font-bold uppercase tracking-widest text-yellow-400">
+                        — Billie Jean King / Petikan Psikologi Sukan
+                    </p>
+                    <div class="pt-4 flex justify-center space-x-3">
+                        <button onclick="janaKataRandom()" class="bg-slate-800 hover:bg-slate-700 text-xs font-semibold px-4 py-2 rounded-lg transition flex items-center space-x-2">
+                            <i class="fa-solid fa-shuffle"></i>
+                            <span>Petikan Lain</span>
+                        </button>
+                        <button onclick="bacaKataSemangat()" class="bg-yellow-400 hover:bg-yellow-300 text-slate-950 text-xs font-bold px-4 py-2 rounded-lg transition flex items-center space-x-2">
+                            <i class="fa-solid fa-volume-high"></i>
+                            <span>Dengar Suara</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. PERMAINAN KECIL (FOKUS & REFLEKS) -->
+        <section id="sec-game" class="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-xl">
+            <div class="flex items-center space-x-3 mb-6">
+                <div class="w-10 h-10 rounded-xl bg-yellow-400/10 text-yellow-400 flex items-center justify-center font-bold text-xl">6</div>
+                <div>
+                    <h2 class="font-heading text-3xl font-bold uppercase leading-none">Mini Game: Pro Reaction & Focus Grid</h2>
+                    <p class="text-xs text-slate-400">Uji kepantasan tindak balas dan tumpuan visual anda dalam masa 20 saat</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <!-- Game Board -->
+                <div class="lg:col-span-8 bg-slate-950 p-6 rounded-2xl border border-slate-800 flex flex-col items-center">
+                    <div class="flex items-center justify-between w-full max-w-md mb-4 text-sm font-bold uppercase">
+                        <div class="text-slate-400">Masa: <span id="gameTimer" class="text-yellow-400 text-lg">20</span>s</div>
+                        <div class="text-slate-400">Skor: <span id="gameScore" class="text-cyan-400 text-lg">0</span></div>
+                        <div class="text-slate-400">Refleks Purata: <span id="gameSpeed" class="text-emerald-400 text-lg">0</span>ms</div>
+                    </div>
+
+                    <!-- Target Grid (4x4) -->
+                    <div id="gameGrid" class="grid grid-cols-4 gap-3 w-full max-w-md aspect-square bg-slate-900 p-3 rounded-2xl border border-slate-800">
+                        <!-- 16 sasaran dikawal JS -->
+                    </div>
+
+                    <div class="mt-6 flex space-x-4">
+                        <button id="btnMulaGame" onclick="mulaGame()" class="bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-bold px-6 py-2.5 rounded-xl transition shadow-lg shadow-yellow-500/20">
+                            Mula Permainan
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Status Game -->
+                <div class="lg:col-span-4 space-y-4">
+                    <div class="bg-slate-950 p-6 rounded-2xl border border-slate-800 space-y-3">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400">Gred Refleks Pro</h4>
+                        <div id="gameRatingText" class="font-heading text-4xl font-bold text-slate-500">BELUM BERMULA</div>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            Pemain Pro memerlukan koordinasi mata-tangan dan tumpuan tajam bawah tekanan masa. Tekan sasaran berwarna kuning secepat mungkin!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. FEEDBACK & REFLEKSI PEMAIN -->
+        <section id="sec-feedback" class="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-xl">
+            <div class="flex items-center space-x-3 mb-6">
+                <div class="w-10 h-10 rounded-xl bg-blue-400/10 text-blue-400 flex items-center justify-center font-bold text-xl">7</div>
+                <div>
+                    <h2 class="font-heading text-3xl font-bold uppercase leading-none">Feedback & Refleksi Diri</h2>
+                    <p class="text-xs text-slate-400">Hantar maklum balas peribadi untuk rekod simpanan modul latihan</p>
+                </div>
+            </div>
+
+            <form id="formFeedback" onsubmit="handleFeedbackSubmit(event)" class="space-y-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold uppercase text-slate-400 mb-2">Penilaian Modul Hari Ini</label>
+                        <select id="fbPenilaian" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-100 focus:outline-none focus:border-yellow-400 transition">
+                            <option value="5">⭐⭐⭐⭐⭐ (Sangat Membantu Motivasi)</option>
+                            <option value="4">⭐⭐⭐⭐ (Bagus & Bermanfaat)</option>
+                            <option value="3">⭐⭐⭐ (Sederhana)</option>
+                            <option value="2">⭐⭐ (Perlu Penambahbaikan)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase text-slate-400 mb-2">Perasaan Selepas Modul</label>
+                        <input type="text" id="fbPerasaan" required placeholder="Cth: Lebih bersemangat & yakin" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-100 focus:outline-none focus:border-yellow-400 transition">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold uppercase text-slate-400 mb-2">Refleksi / Ulasan Kepada Jurulatih / Pembuat Modul</label>
+                    <textarea id="fbUlasan" rows="3" required placeholder="Tulis catatan refleksi latihan anda di sini..." class="w-full bg-slate-950 border border-slate-800 rounded-xl p-4 text-sm text-slate-100 focus:outline-none focus:border-yellow-400 transition resize-none"></textarea>
+                </div>
+                <div class="flex justify-end">
+                    <button type="submit" class="bg-blue-500 hover:bg-blue-400 text-slate-950 font-bold px-6 py-3 rounded-xl transition flex items-center space-x-2">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        <span>Hantar Refleksi Diri</span>
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <!-- 9. DATA UNTUK DISIMPAN OLEH PEMBUAT -->
+        <section id="sec-admin" class="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-xl">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-xl bg-yellow-400 text-slate-950 flex items-center justify-center font-bold text-xl">8</div>
+                    <div>
+                        <h2 class="font-heading text-3xl font-bold uppercase leading-none">Panel Data Pembuat / Jurulatih</h2>
+                        <p class="text-xs text-slate-400">Rekod tersimpan pemain, hasil ujian, dan maklum balas</p>
+                    </div>
+                </div>
+
+                <!-- Export & Control Buttons -->
+                <div class="flex flex-wrap items-center gap-2">
+                    <button onclick="mulakanSesiBaru()" class="bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-bold text-xs px-3.5 py-2.5 rounded-lg transition flex items-center space-x-1.5">
+                        <i class="fa-solid fa-user-plus"></i>
+                        <span>Daftar Sesi Atlet Baru</span>
+                    </button>
+                    <button onclick="exportDataCSV()" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs px-3.5 py-2.5 rounded-lg transition flex items-center space-x-1.5">
+                        <i class="fa-solid fa-file-csv"></i>
+                        <span>Muat Turun CSV</span>
+                    </button>
+                    <button onclick="exportDataJSON()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs px-3.5 py-2.5 rounded-lg transition flex items-center space-x-1.5 border border-slate-700">
+                        <i class="fa-solid fa-code"></i>
+                        <span>Muat Turun JSON</span>
+                    </button>
+                    <button onclick="padamSemuaData()" class="bg-rose-500/20 hover:bg-rose-500/30 text-rose-300 font-bold text-xs px-3.5 py-2.5 rounded-lg transition border border-rose-500/30">
+                        <i class="fa-solid fa-trash"></i>
+                        <span>Padam Data</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Ringkasan dan carian rekod -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4" aria-live="polite">
+                <div class="rounded-xl border border-slate-800 bg-slate-950 p-4">
+                    <p class="text-xs uppercase tracking-wider text-slate-400">Jumlah Rekod</p>
+                    <p id="jumlahRekod" class="text-2xl font-bold text-yellow-400">0</p>
+                </div>
+                <div class="rounded-xl border border-slate-800 bg-slate-950 p-4">
+                    <p class="text-xs uppercase tracking-wider text-slate-400">Purata Indeks Mental</p>
+                    <p id="purataMental" class="text-2xl font-bold text-cyan-400">0%</p>
+                </div>
+                <div class="rounded-xl border border-slate-800 bg-slate-950 p-4">
+                    <label for="carianRekod" class="block text-xs uppercase tracking-wider text-slate-400 mb-2">Cari Rekod Pemain</label>
+                    <input id="carianRekod" type="search" placeholder="Nama, sukan atau masalah..." autocomplete="off"
+                        class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-yellow-400"
+                        aria-label="Cari rekod pemain" oninput="renderAdminTable()">
+                </div>
+            </div>
+
+            <!-- Jadual Rekod Pemain -->
+            <div class="overflow-x-auto rounded-xl border border-slate-800 bg-slate-950">
+                <table class="w-full text-left text-xs text-slate-300">
+                    <thead class="bg-slate-900 text-slate-400 font-semibold uppercase border-b border-slate-800">
+                        <tr>
+                            <th class="p-3.5">Masa / Tarikh</th>
+                            <th class="p-3.5">Nama Pemain</th>
+                            <th class="p-3.5">Sukan / Tahap</th>
+                            <th class="p-3.5">Indeks Mental</th>
+                            <th class="p-3.5">Refleks Game</th>
+                            <th class="p-3.5">Masalah Utama</th>
+                            <th class="p-3.5">Feedback</th>
+                        </tr>
+                    </thead>
+                    <tbody id="jadualAdminBody" class="divide-y divide-slate-800/60">
+                        <!-- Rekod disuntik melalui JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 border-t border-slate-800 py-6 text-center text-xs text-slate-500">
+        <p>© 2026 PRO PLAYER MENTALITY — Sistem Pembangunan Motivasi & Ketahanan Mental Sukan · Versi 2.0</p>
+    </footer>
+
+    <!-- MODAL POPUP SYSTEM -->
+    <div id="customModal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-md w-full p-6 space-y-4 shadow-2xl">
+            <h3 id="modalTitle" class="font-heading text-2xl font-bold uppercase text-yellow-400">Mesej Sistem</h3>
+            <p id="modalBody" class="text-sm text-slate-300 leading-relaxed"></p>
+            <div class="flex justify-end pt-2">
+                <button onclick="tutupModal()" class="bg-yellow-400 text-slate-950 font-bold px-5 py-2 rounded-xl text-xs uppercase tracking-wider">Faham</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, onSnapshot, deleteDoc, doc, getDocs, setDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'pro-player-mentality-app';
+        let db = null;
+        let auth = null;
+        let isCloudActive = false;
+
+        // ID Unik Sesi Pemain Semasa
+        let currentSessionId = localStorage.getItem('pro_player_current_session_id');
+        if (!currentSessionId) {
+            currentSessionId = 'atlet_' + Date.now() + '_' + Math.random().toString(36).substring(2, 6);
+            localStorage.setItem('pro_player_current_session_id', currentSessionId);
+        }
+
+        let statePemain = {
+            nama: '',
+            sukan: '',
+            tahap: '',
+            umur: '',
+            masalahSelected: [],
+            skorAnalisis: 0,
+            skorKategori: { gemuruh: 0, fokus: 0, ketahanan: 0, keyakinan: 0 },
+            highScoreGame: 0,
+            bestSpeedMs: 0,
+            feedback: null,
+            tarikh: new Date().toLocaleDateString('ms-MY')
+        };
+
+        let dbSemuaPemain = [];
+        let chartInstance = null;
+
+        async function initCloudStorage() {
+            // Muat data tempatan terlebih dahulu supaya peranti tidak kosong semasa menunggu Cloud
+            loadLocalDB();
+
+            try {
+                if (typeof __firebase_config !== 'undefined' && __firebase_config) {
+                    const firebaseConfig = JSON.parse(__firebase_config);
+                    const app = initializeApp(firebaseConfig);
+                    auth = getAuth(app);
+                    db = getFirestore(app);
+
+                    if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                        await signInWithCustomToken(auth, __initial_auth_token);
+                    } else {
+                        await signInAnonymously(auth);
+                    }
+
+                    isCloudActive = true;
+                    const badge = document.getElementById('cloudStatusBadge');
+                    if (badge) badge.classList.remove('hidden');
+
+                    listenCloudData();
+                }
+            } catch (err) {
+                console.warn("Menggunakan pangkalan data tempatan sepenuhnya:", err);
+            }
+        }
+
+        function listenCloudData() {
+            if (!db || !isCloudActive) return;
+
+            const colRef = collection(db, 'artifacts', appId, 'public', 'data', 'rekod_pemain');
+
+            onSnapshot(colRef, (snapshot) => {
+                const cloudRecords = [];
+                snapshot.forEach((docSnap) => {
+                    cloudRecords.push({
+                        docId: docSnap.id,
+                        ...docSnap.data()
+                    });
+                });
+
+                cloudRecords.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
+                
+                if (cloudRecords.length > 0) {
+                    dbSemuaPemain = cloudRecords;
+                    saveLocalDB(false); // Kemaskini simpanan tempatan secara automatik
+                }
+                renderAdminTable();
+            }, (error) => {
+                console.error("Ralat penstriman data Firestore:", error);
+            });
+        }
+
+        // SENARAI MASALAH MOTIVASI
+        const senaraiMasalah = [
+            { id: 'm1', tajuk: 'Gemuruh / Ansiati Sebelum Perlawanan', icon: 'fa-heart-pulse' },
+            { id: 'm2', tajuk: 'Kehilangan Fokus Sewaktu Tekanan', icon: 'fa-bullseye' },
+            { id: 'm3', tajuk: 'Takut Gagal & Dikritik Jurulatih/Lawan', icon: 'fa-shield-cat' },
+            { id: 'm4', tajuk: 'Keletihan Mental & Burnout Latihan', icon: 'fa-battery-quarter' },
+            { id: 'm5', tajuk: 'Kurang Keyakinan Diri Apabila Ketinggalan', icon: 'fa-arrow-down-short-wide' },
+            { id: 'm6', tajuk: 'Kawalan Marah / Emosi Tidak Stabil', icon: 'fa-face-angry' }
+        ];
+
+        // SENARAI SOALAN SOAL SELIDIK (1-5 Scale)
+        const senaraiSoalan = [
+            { id: 'q1', kat: 'gemuruh', teks: 'Saya mampu bertenang dan mengawal pernafasan sebelum perlawanan bermula.' },
+            { id: 'q2', kat: 'gemuruh', teks: 'Perasaan gementar tidak menjejaskan pergerakan fizikal awal saya.' },
+            { id: 'q3', kat: 'fokus', teks: 'Saya boleh mengekalkan tumpuan walaupun terdapat sorakan penonton/gangguan.' },
+            { id: 'q4', kat: 'fokus', teks: 'Saya fokus pada proses permainan, bukannya terlalu risau akan keputusan akhir.' },
+            { id: 'q5', kat: 'ketahanan', teks: 'Saya bangkit semula dengan pantas selepas melakukan kesilapan.' },
+            { id: 'q6', kat: 'ketahanan', teks: 'Saya tetap berjuang bermati-matian walaupun pasukan/saya ketinggalan mata.' },
+            { id: 'q7', kat: 'keyakinan', teks: 'Saya mempunyai kepercayaan tinggi terhadap kemahiran latihan yang telah dibuat.' },
+            { id: 'q8', kat: 'keyakinan', teks: 'Saya bersedia mengambil tanggungjawab untuk membuat tindakan penentu kemenangan.' }
+        ];
+
+        // SENARAI KATA SEMANGAT
+        const koleksiKata = {
+            sebelum: [
+                { teks: "Gemuruh itu bukti anda mengambil berat tentang perjuangan ini. Tukar debaran jantung kepada tenaga ledakan!", author: "Jurulatih Mental Pro" },
+                { teks: "Fokus pada perkara yang boleh dikawal: usaha, fokus, dan sikap anda. Selebihnya akan menyusul.", author: "Kobe Bryant Mindset" }
+            ],
+            ketinggalan: [
+                { teks: "Perlawanan belum tamat selagi wisel akhir belum ditiup. Setiap mata baru adalah peluang bangkit!", author: "Lee Chong Wei Mentality" },
+                { teks: "Juara sebenar direka bukan semasa mereka mendahului, tetapi semasa mereka bangkit dari jurang kekalahan.", author: "Cristiano Ronaldo" }
+            ],
+            keletihan: [
+                { teks: "Apabila kaki anda penat, larilah dengan hati anda.", author: "Motto Olahraga Pro" },
+                { teks: "Kesakitan latihan bersifat sementara, tetapi gelaran juara kekal selamanya.", author: "Muhammad Ali" }
+            ]
+        };
+
+        function showModal(title, body) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalBody').innerText = body;
+            document.getElementById('customModal').classList.remove('hidden');
+        }
+
+        function tutupModal() {
+            document.getElementById('customModal').classList.add('hidden');
+        }
+
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function loadLocalDB() {
+            const saved = localStorage.getItem('pro_player_mentality_db');
+            if (saved) {
+                try {
+                    dbSemuaPemain = JSON.parse(saved);
+                } catch (e) {
+                    dbSemuaPemain = [];
+                }
+            }
+            renderAdminTable();
+        }
+
+        function saveLocalDB(shouldRender = true) {
+            try {
+                localStorage.setItem('pro_player_mentality_db', JSON.stringify(dbSemuaPemain));
+            } catch (err) {
+                console.error('Tidak dapat menyimpan data ke storan pelayar:', err);
+                showModal('Storan Penuh / Disekat', 'Pelayar tidak dapat menyimpan data secara tempatan. Eksport data penting dan semak tetapan storan pelayar anda.');
+            }
+            if (shouldRender) renderAdminTable();
+        }
+
+        // Tukar teks kepada teks HTML selamat sebelum dipaparkan dalam jadual.
+        function escapeHTML(value) {
+            return String(value ?? '').replace(/[&<>"']/g, char => ({
+                '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+            })[char]);
+        }
+
+        // Petik medan CSV dan cegah formula spreadsheet daripada input pengguna.
+        function csvCell(value) {
+            let text = String(value ?? '');
+            if (/^[\s]*[=+@\-]/.test(text)) text = "'" + text;
+            return '"' + text.replace(/"/g, '""') + '"';
+        }
+
+        async function simpanSatuRekod(isSilent = false) {
+            const record = {
+                id: currentSessionId,
+                timestamp: Date.now(),
+                nama: statePemain.nama || 'Belum Daftar',
+                sukan: statePemain.sukan || '-',
+                tahap: statePemain.tahap || '-',
+                umur: statePemain.umur || '-',
+                masalah: statePemain.masalahSelected.join(', ') || 'Tiada dinyatakan',
+                skorMental: statePemain.skorAnalisis || 0,
+                highScoreGame: statePemain.highScoreGame || 0,
+                bestSpeedMs: statePemain.bestSpeedMs || 0,
+                feedback: statePemain.feedback ? `${statePemain.feedback.penilaian} Star - ${statePemain.feedback.ulasan}` : 'Belum diisi',
+                tarikh: new Date().toLocaleString('ms-MY')
+            };
+
+            // Simpan ke array tempatan
+            const idx = dbSemuaPemain.findIndex(item => item.id === currentSessionId);
+            if (idx > -1) {
+                dbSemuaPemain[idx] = { ...dbSemuaPemain[idx], ...record };
+            } else {
+                dbSemuaPemain.unshift(record);
+            }
+            saveLocalDB(true);
+
+            // Simpan ke Firestore jika aktif
+            if (isCloudActive && db) {
+                try {
+                    const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'rekod_pemain', currentSessionId);
+                    await setDoc(docRef, record, { merge: true });
+                } catch (err) {
+                    console.error("Gagal auto-simpan ke Cloud:", err);
+                }
+            }
+        }
+
+        async function handleDaftarPemain(e) {
+            e.preventDefault();
+            statePemain.nama = document.getElementById('namaPemain').value;
+            statePemain.sukan = document.getElementById('sukanPemain').value;
+            statePemain.tahap = document.getElementById('tahapPemain').value;
+            statePemain.umur = document.getElementById('umurPemain').value;
+
+            document.getElementById('statusProfil').classList.remove('hidden');
+            document.getElementById('statusProfilText').innerText = `Profil ${statePemain.nama} (${statePemain.sukan}) berjaya disimpan!`;
+            
+            await simpanSatuRekod(false);
+            showModal("Pendaftaran Berjaya & Disimpan", `Profil ${statePemain.nama} telah didaftarkan dan disimpan secara automatik! Data tidak akan hilang walaupun anda mereset halaman.`);
+        }
+
+        function renderMasalahChecklist() {
+            const container = document.getElementById('gridMasalah');
+            container.innerHTML = senaraiMasalah.map(m => `
+                <label class="bg-slate-950 border border-slate-800 hover:border-yellow-400/50 p-4 rounded-xl flex items-start space-x-3 cursor-pointer transition">
+                    <input type="checkbox" value="${m.tajuk}" onchange="toggleMasalah('${m.tajuk}')" class="mt-1 rounded text-yellow-400 focus:ring-0 bg-slate-900 border-slate-700">
+                    <div>
+                        <div class="text-xs font-bold text-slate-200 flex items-center space-x-1.5">
+                            <i class="fa-solid ${m.icon} text-yellow-400"></i>
+                            <span>${m.tajuk}</span>
+                        </div>
+                    </div>
+                </label>
+            `).join('');
+        }
+
+        async function toggleMasalah(tajuk) {
+            const idx = statePemain.masalahSelected.indexOf(tajuk);
+            if (idx > -1) {
+                statePemain.masalahSelected.splice(idx, 1);
+            } else {
+                statePemain.masalahSelected.push(tajuk);
+            }
+            await simpanSatuRekod(true);
+        }
+
+        function renderSoalSelidik() {
+            const container = document.getElementById('containerSoalSelidik');
+            container.innerHTML = senaraiSoalan.map((s, idx) => `
+                <div class="bg-slate-950 p-4 sm:p-5 rounded-xl border border-slate-800 space-y-3">
+                    <p class="text-xs sm:text-sm font-semibold text-slate-200">${idx + 1}. ${s.teks}</p>
+                    <div class="flex items-center justify-between max-w-md gap-1">
+                        <span class="text-[10px] uppercase font-bold text-rose-400">Tidak Setuju</span>
+                        <div class="flex items-center space-x-2">
+                            ${[1,2,3,4,5].map(val => `
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="soal_${s.id}" value="${val}" class="peer hidden" ${val===3?'checked':''}>
+                                    <span class="w-8 h-8 rounded-lg bg-slate-900 border border-slate-700 peer-checked:bg-yellow-400 peer-checked:text-slate-950 peer-checked:border-yellow-400 flex items-center justify-center text-xs font-bold transition">
+                                        ${val}
+                                    </span>
+                                </label>
+                            `).join('')}
+                        </div>
+                        <span class="text-[10px] uppercase font-bold text-emerald-400">Sangat Setuju</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        async function prosesSoalSelidik() {
+            let katScore = { gemuruh: 0, fokus: 0, ketahanan: 0, keyakinan: 0 };
+            let katCount = { gemuruh: 0, fokus: 0, ketahanan: 0, keyakinan: 0 };
+
+            senaraiSoalan.forEach(s => {
+                const checked = document.querySelector(`input[name="soal_${s.id}"]:checked`);
+                if (checked) {
+                    const val = parseInt(checked.value);
+                    katScore[s.kat] += val;
+                    katCount[s.kat] += 5;
+                }
+            });
+
+            const gemuruhPct = Math.round((katScore.gemuruh / katCount.gemuruh) * 100);
+            const fokusPct = Math.round((katScore.fokus / katCount.fokus) * 100);
+            const ketahananPct = Math.round((katScore.ketahanan / katCount.ketahanan) * 100);
+            const keyakinanPct = Math.round((katScore.keyakinan / katCount.keyakinan) * 100);
+
+            statePemain.skorKategori = {
+                gemuruh: gemuruhPct,
+                fokus: fokusPct,
+                ketahanan: ketahananPct,
+                keyakinan: keyakinanPct
+            };
+
+            const purata = Math.round((gemuruhPct + fokusPct + ketahananPct + keyakinanPct) / 4);
+            statePemain.skorAnalisis = purata;
+
+            document.getElementById('textSkorKeseluruhan').innerText = `${purata}%`;
+            
+            let statusBadge = "PRO MENTALITY";
+            let cadangan = "Tahap ketahanan mental anda berada pada paras tinggi. Kekalkan fokus dan amalkan teknik pernafasan visualisasi.";
+            
+            if (purata < 50) {
+                statusBadge = "PERLU SOKONGAN MENTAL";
+                cadangan = "Anda kerap dipengaruhi tekanan luar. Disyorkan fokus latihan pernafasan (box breathing) dan perbincangan motivasi khas.";
+            } else if (purata < 75) {
+                statusBadge = "PEMBANGUNAN PRO";
+                cadangan = "Mental anda stabil, namun masih mudah terganggu apabila ketinggalan. Tingkatkan latihan simulasi perlawanan bertekanan.";
+            }
+
+            document.getElementById('textTahapStatus').innerText = statusBadge;
+            document.getElementById('textCadangan').innerText = cadangan;
+
+            if (chartInstance) {
+                chartInstance.data.datasets[0].data = [gemuruhPct, fokusPct, ketahananPct, keyakinanPct];
+                chartInstance.update();
+            }
+
+            // Auto-simpan analisis data
+            await simpanSatuRekod(true);
+
+            scrollToSection('sec-analisis');
+            showModal("Analisis Siap & Disimpan", `Indeks Mental Pro anda adalah ${purata}%. Data telah disimpan secara kekal.`);
+        }
+
+        function initChart() {
+            const ctx = document.getElementById('radarChart').getContext('2d');
+            chartInstance = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ['Kawalan Gemuruh', 'Fokus Visual', 'Daya Tahan', 'Keyakinan Diri'],
+                    datasets: [{
+                        label: 'Tahap Mental (%)',
+                        data: [50, 50, 50, 50],
+                        backgroundColor: 'rgba(250, 204, 21, 0.25)',
+                        borderColor: '#facc15',
+                        borderWidth: 2,
+                        pointBackgroundColor: '#06b6d4',
+                        pointBorderColor: '#fff',
+                        pointRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            angleLines: { color: 'rgba(255, 255, 255, 0.1)' },
+                            grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                            pointLabels: {
+                                color: '#94a3b8',
+                                font: { size: 10, family: 'Inter' }
+                            },
+                            ticks: { display: false, backdropColor: 'transparent' },
+                            suggestedMin: 0,
+                            suggestedMax: 100
+                        }
+                    },
+                    plugins: {
+                        legend: { display: false }
+                    }
+                }
+            });
+        }
+
+        function tukarKataSemangat(kategori) {
+            const arrayKata = koleksiKata[kategori] || koleksiKata.sebelum;
+            const randomQuote = arrayKata[Math.floor(Math.random() * arrayKata.length)];
+            document.getElementById('quoteText').innerText = `"${randomQuote.teks}"`;
+            document.getElementById('quoteAuthor').innerText = `— ${randomQuote.author}`;
+        }
+
+        function janaKataRandom() {
+            const keys = Object.keys(koleksiKata);
+            const randomKey = keys[Math.floor(Math.random() * keys.length)];
+            tukarKataSemangat(randomKey);
+        }
+
+        function bacaKataSemangat() {
+            const teks = document.getElementById('quoteText').innerText;
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const speech = new SpeechSynthesisUtterance(teks);
+                speech.lang = 'ms-MY';
+                speech.rate = 0.95;
+                window.speechSynthesis.speak(speech);
+            } else {
+                showModal("Info", "Fungsi suara tidak disokong oleh pelayar web anda.");
+            }
+        }
+
+        let gameActive = false;
+        let gameScore = 0;
+        let gameTime = 20;
+        let gameTimerInterval = null;
+        let activeTargetIndex = -1;
+        let lastTargetTime = 0;
+        let reactionTimes = [];
+
+        function initGameBoard() {
+            const grid = document.getElementById('gameGrid');
+            grid.innerHTML = '';
+            for (let i = 0; i < 16; i++) {
+                const btn = document.createElement('button');
+                btn.className = 'w-full h-full rounded-xl bg-slate-950 border border-slate-800 transition flex items-center justify-center font-bold text-lg cursor-pointer hover:bg-slate-800';
+                btn.id = `node_${i}`;
+                btn.onclick = () => handleNodeClick(i);
+                grid.appendChild(btn);
+            }
+        }
+
+        function mulaGame() {
+            if (gameActive) return;
+
+            gameActive = true;
+            gameScore = 0;
+            gameTime = 20;
+            reactionTimes = [];
+
+            document.getElementById('gameScore').innerText = '0';
+            document.getElementById('gameTimer').innerText = '20';
+            document.getElementById('gameSpeed').innerText = '0';
+            document.getElementById('btnMulaGame').innerText = 'Permainan Berjalan...';
+            document.getElementById('btnMulaGame').classList.add('opacity-50', 'pointer-events-none');
+
+            nextTarget();
+
+            gameTimerInterval = setInterval(() => {
+                gameTime--;
+                document.getElementById('gameTimer').innerText = gameTime;
+
+                if (gameTime <= 0) {
+                    tamatGame();
+                }
+            }, 1000);
+        }
+
+        function nextTarget() {
+            if (activeTargetIndex !== -1) {
+                const oldNode = document.getElementById(`node_${activeTargetIndex}`);
+                if (oldNode) {
+                    oldNode.className = 'w-full h-full rounded-xl bg-slate-950 border border-slate-800 transition flex items-center justify-center font-bold text-lg cursor-pointer hover:bg-slate-800';
+                    oldNode.innerHTML = '';
+                }
+            }
+
+            activeTargetIndex = Math.floor(Math.random() * 16);
+            const newNode = document.getElementById(`node_${activeTargetIndex}`);
+            if (newNode) {
+                newNode.className = 'w-full h-full rounded-xl bg-yellow-400 text-slate-950 border-2 border-yellow-300 shadow-lg shadow-yellow-400/40 font-black text-xl flex items-center justify-center animate-pulse';
+                newNode.innerHTML = '<i class="fa-solid fa-bolt"></i>';
+            }
+
+            lastTargetTime = Date.now();
+        }
+
+        function handleNodeClick(index) {
+            if (!gameActive) return;
+
+            if (index === activeTargetIndex) {
+                const diff = Date.now() - lastTargetTime;
+                reactionTimes.push(diff);
+
+                gameScore++;
+                document.getElementById('gameScore').innerText = gameScore;
+
+                const avgSpeed = Math.round(reactionTimes.reduce((a,b)=>a+b,0) / reactionTimes.length);
+                document.getElementById('gameSpeed').innerText = avgSpeed;
+
+                nextTarget();
+            }
+        }
+
+        async function tamatGame() {
+            clearInterval(gameTimerInterval);
+            gameActive = false;
+
+            if (activeTargetIndex !== -1) {
+                const oldNode = document.getElementById(`node_${activeTargetIndex}`);
+                if (oldNode) {
+                    oldNode.className = 'w-full h-full rounded-xl bg-slate-950 border border-slate-800 transition flex items-center justify-center font-bold text-lg cursor-pointer hover:bg-slate-800';
+                    oldNode.innerHTML = '';
+                }
+            }
+
+            document.getElementById('btnMulaGame').innerText = 'Mula Permainan';
+            document.getElementById('btnMulaGame').classList.remove('opacity-50', 'pointer-events-none');
+
+            const avgSpeed = reactionTimes.length > 0 ? Math.round(reactionTimes.reduce((a,b)=>a+b,0) / reactionTimes.length) : 0;
+            statePemain.highScoreGame = gameScore;
+            statePemain.bestSpeedMs = avgSpeed;
+
+            let gred = "S-RANK PRO";
+            if (gameScore < 10) gred = "AMATUR";
+            else if (gameScore < 18) gred = "SEMI-PRO";
+
+            document.getElementById('gameRatingText').innerText = `${gred} (${gameScore} Hits)`;
+
+            await simpanSatuRekod(true);
+
+            showModal("Tamat Permainan & Skor Disimpan!", `Skor Refleks Anda: ${gameScore} Hits\nPurata Kepantasan: ${avgSpeed}ms\nGred: ${gred}`);
+        }
+
+        async function handleFeedbackSubmit(e) {
+            e.preventDefault();
+
+            statePemain.feedback = {
+                penilaian: document.getElementById('fbPenilaian').value,
+                perasaan: document.getElementById('fbPerasaan').value,
+                ulasan: document.getElementById('fbUlasan').value
+            };
+
+            await simpanSatuRekod(false);
+            showModal("Refleksi Diri Berjaya Hantar!", "Terima kasih atas maklum balas anda. Data telah disimpan mengikut storan yang tersedia pada peranti atau sambungan awan yang dikonfigurasi.");
+            document.getElementById('formFeedback').reset();
+        }
+
+        function renderAdminTable() {
+            const tbody = document.getElementById('jadualAdminBody');
+            if (!tbody) return;
+
+            const searchInput = document.getElementById('carianRekod');
+            const query = (searchInput?.value || '').trim().toLocaleLowerCase('ms-MY');
+            const filtered = dbSemuaPemain.filter(p => [p.nama, p.sukan, p.tahap, p.masalah, p.feedback, p.tarikh]
+                .some(value => String(value ?? '').toLocaleLowerCase('ms-MY').includes(query)));
+            const totalEl = document.getElementById('jumlahRekod');
+            const avgEl = document.getElementById('purataMental');
+            if (totalEl) totalEl.textContent = String(dbSemuaPemain.length);
+            const scores = dbSemuaPemain.map(p => Number(p.skorMental) || 0);
+            const average = scores.length ? Math.round(scores.reduce((sum, value) => sum + value, 0) / scores.length) : 0;
+            if (avgEl) avgEl.textContent = average + '%';
+
+            if (filtered.length === 0) {
+                const message = dbSemuaPemain.length === 0 ? 'Tiada rekod data disimpan lagi.' : 'Tiada rekod sepadan dengan carian anda.';
+                tbody.innerHTML = `<tr><td colspan="7" class="p-4 text-center text-slate-500">${message}</td></tr>`;
+                return;
+            }
+
+            tbody.innerHTML = filtered.map(p => `
+                <tr class="hover:bg-slate-900/60 transition">
+                    <td class="p-3.5 text-slate-400">${escapeHTML(p.tarikh)}</td>
+                    <td class="p-3.5 font-bold text-slate-100">${escapeHTML(p.nama)}</td>
+                    <td class="p-3.5"><span class="bg-slate-800 px-2 py-0.5 rounded text-[10px] text-yellow-400">${escapeHTML(p.sukan)}</span> (${escapeHTML(p.tahap)})</td>
+                    <td class="p-3.5 font-bold text-cyan-400">${escapeHTML(p.skorMental)}%</td>
+                    <td class="p-3.5">${escapeHTML(p.highScoreGame)} hits (${escapeHTML(p.bestSpeedMs)}ms)</td>
+                    <td class="p-3.5 text-slate-400 truncate max-w-[150px]" title="${escapeHTML(p.masalah)}">${escapeHTML(p.masalah)}</td>
+                    <td class="p-3.5 text-slate-400 truncate max-w-[180px]" title="${escapeHTML(p.feedback)}">${escapeHTML(p.feedback)}</td>
+                </tr>
+            `).join('');
+        }
+
+        function mulakanSesiBaru() {
+            currentSessionId = 'atlet_' + Date.now() + '_' + Math.random().toString(36).substring(2, 6);
+            localStorage.setItem('pro_player_current_session_id', currentSessionId);
+            
+            statePemain = {
+                nama: '', sukan: '', tahap: '', umur: '',
+                masalahSelected: [], skorAnalisis: 0,
+                skorKategori: { gemuruh: 0, fokus: 0, ketahanan: 0, keyakinan: 0 },
+                highScoreGame: 0, bestSpeedMs: 0, feedback: null,
+                tarikh: new Date().toLocaleDateString('ms-MY')
+            };
+
+            const form = document.getElementById('formPemain');
+            if (form) form.reset();
+            document.getElementById('statusProfil').classList.add('hidden');
+            scrollToSection('sec-daftar');
+            showModal("Sesi Baru Bermula", "Sila daftarkan atlet baru untuk memulakan penilaian.");
+        }
+
+        function exportDataCSV() {
+            if (dbSemuaPemain.length === 0) {
+                showModal("Tiada Data", "Tiada rekod data pemain untuk dieksport.");
+                return;
+            }
+
+            const headers = ['ID','Tarikh','Nama Pemain','Sukan','Tahap','Umur','Masalah Motivasi','Indeks Mental (%)','Skor Game','Refleks (ms)','Feedback'];
+            const rows = dbSemuaPemain.map(p => [p.id,p.tarikh,p.nama,p.sukan,p.tahap,p.umur,p.masalah,p.skorMental,p.highScoreGame,p.bestSpeedMs,p.feedback]
+                .map(csvCell).join(','));
+            const blob = new Blob(['\uFEFF' + [headers.map(csvCell).join(','), ...rows].join('\r\n')], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `Data_ProPlayerMentality_${new Date().toISOString().slice(0,10)}.csv`;
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+            setTimeout(() => URL.revokeObjectURL(url), 1000);
+        }
+
+        function exportDataJSON() {
+            if (dbSemuaPemain.length === 0) {
+                showModal("Tiada Data", "Tiada rekod data pemain untuk dieksport.");
+                return;
+            }
+
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(dbSemuaPemain, null, 2));
+            const downloadAnchor = document.createElement('a');
+            downloadAnchor.setAttribute("href", dataStr);
+            downloadAnchor.setAttribute("download", `Data_ProPlayerMentality_${Date.now()}.json`);
+            document.body.appendChild(downloadAnchor);
+            downloadAnchor.click();
+            downloadAnchor.remove();
+        }
+
+        async function padamSemuaData() {
+            if (dbSemuaPemain.length === 0) {
+                showModal('Tiada Data', 'Tiada rekod untuk dipadam.');
+                return;
+            }
+            const disahkan = window.confirm(`AMARAN: Anda akan memadam ${dbSemuaPemain.length} rekod pemain. Tindakan ini tidak boleh dipulihkan. Muat turun CSV/JSON terlebih dahulu jika perlu. Teruskan?`);
+            if (!disahkan) return;
+
+            if (isCloudActive && db) {
+                try {
+                    const colRef = collection(db, 'artifacts', appId, 'public', 'data', 'rekod_pemain');
+                    const snapshot = await getDocs(colRef);
+                    const deletePromises = snapshot.docs.map(docSnap => deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'rekod_pemain', docSnap.id)));
+                    await Promise.all(deletePromises);
+                    showModal("Padam Data Awan", "Semua data rekod pembuat telah dibersihkan.");
+                } catch (err) {
+                    console.error("Gagal padam dari awan:", err);
+                }
+            }
+
+            dbSemuaPemain = [];
+            saveLocalDB(true);
+        }
+
+        // Pautan fungsi ke skop tetingkap global
+        window.scrollToSection = scrollToSection;
+        window.handleDaftarPemain = handleDaftarPemain;
+        window.toggleMasalah = toggleMasalah;
+        window.prosesSoalSelidik = prosesSoalSelidik;
+        window.tukarKataSemangat = tukarKataSemangat;
+        window.janaKataRandom = janaKataRandom;
+        window.bacaKataSemangat = bacaKataSemangat;
+        window.mulaGame = mulaGame;
+        window.handleFeedbackSubmit = handleFeedbackSubmit;
+        window.exportDataCSV = exportDataCSV;
+        window.exportDataJSON = exportDataJSON;
+        window.padamSemuaData = padamSemuaData;
+        window.mulakanSesiBaru = mulakanSesiBaru;
+        window.tutupModal = tutupModal;
+
+        window.addEventListener('DOMContentLoaded', () => {
+            initCloudStorage();
+            renderMasalahChecklist();
+            renderSoalSelidik();
+            initChart();
+            initGameBoard();
+        });
+    </script>
+</body>
+</html>
